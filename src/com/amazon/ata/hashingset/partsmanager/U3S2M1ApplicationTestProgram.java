@@ -5,7 +5,8 @@ import java.util.Arrays;
 public class U3S2M1ApplicationTestProgram {
 
         public static void main(String[] args) {
-                System.out.println("-".repeat(50) + "\nDefining flex part...");
+
+                System.out.print("-".repeat(50) + "\nDefining flex part...");
                 DevicePart flex = new DevicePart("Knowles", "KAS-700-0147",
                         Arrays.asList(AmazonDevice.FIRE_TV_STICK, AmazonDevice.FIRE_TV_STICK_4K, AmazonDevice.ECHO_BUDS));
                 System.out.println(flex.hashCode()); // 118352462
@@ -35,17 +36,17 @@ public class U3S2M1ApplicationTestProgram {
                         Arrays.asList(AmazonDevice.FIRE_7_KIDS_EDITION, AmazonDevice.FIRE_HD_8_KIDS_EDITION, AmazonDevice.FIRE_HD_10_KIDS_EDITION));
                 System.out.println(wired.hashCode()); // 118352462
 
-                System.out.println("-".repeat(50) + "\nDefining cord part...");
+                System.out.print("-".repeat(50) + "\nDefining cord part...");
                 DevicePart cord = new DevicePart("CUI Devices", "CMEJ-4622-25-L082",
                         Arrays.asList(AmazonDevice.ECHO));
-                System.out.println(cord.hashCode()); // 1550089733
+                System.out.print(cord.hashCode()); // 1550089733
 
-                System.out.println("-".repeat(50) + "\nDefining grounded part...");
+                System.out.print("-".repeat(50) + "\nDefining grounded part...");
                 DevicePart grounded = new DevicePart("Knowles", "EK-26899-P03",
                         Arrays.asList(AmazonDevice.ECHO_FRAMES));
                 System.out.println(grounded.hashCode()); // 1118140812
 
-                System.out.println("-".repeat(50) + "\nDefining puiAudio part...");
+                System.out.print("-".repeat(50) + "\nDefining puiAudio part...");
                 DevicePart puiAudio = new DevicePart("PUI Audio", "AMM-2738B-R",
                         Arrays.asList(AmazonDevice.ECHO_DOT, AmazonDevice.ECHO_SHOW_5, AmazonDevice.ECHO_SHOW_8));
                 System.out.println(puiAudio.hashCode()); // 1311053138
@@ -69,6 +70,19 @@ public class U3S2M1ApplicationTestProgram {
 
                 System.out.println("-".repeat(50) + "\nadding wired part to HashSet in PartManager...");
                 microphonePartManager.addDevicePart(wired);
+
+                // test our find an object method
+                System.out.println("Looking for the : " + button);
+                DevicePart foundObject = microphonePartManager.findPart(button);
+                System.out.println("found : " + foundObject);
+
+                // instatiate an object that we have not added to the arraylist
+                System.out.println("Looking for the : " + button);
+                DevicePart testPart = new DevicePart("test", "123-456",
+                        Arrays.asList(AmazonDevice.ECHO_BUDS));
+                foundObject = microphonePartManager.findPart(testPart);
+                System.out.println("found : " + foundObject);
+
 
                 return;
         }
